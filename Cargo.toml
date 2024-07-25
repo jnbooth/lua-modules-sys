@@ -1,0 +1,31 @@
+[package]
+name = "lua-modules-sys"
+version = "0.0.0"
+authors = ["Joshua Booth <joshua.n.booth@gmail.com>"]
+edition = "2021"
+publish = false
+description = "Bindings for Lua modules exposed to addons"
+repository = "https://github.com/jnbooth/lua-modules-sys"
+
+[dependencies.libsqlite3-sys]
+version = "0.30.0"
+features = ["bundled"]
+optional = true
+
+[dependencies.mlua-sys]
+version = "0.6.1"
+features = ["luajit", "vendored"]
+
+[dependencies.pcre2-sys]
+version = "0.2.9"
+optional = true
+
+[build-dependencies]
+cc = "1.0"
+luajit-src = ">= 210.5.0, < 210.6.0"
+
+[features]
+lbc = []
+lpeg = []
+lrexlib = ["pcre2-sys"]
+lsqlite3 = ["libsqlite3-sys"]
